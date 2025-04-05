@@ -1,1 +1,8 @@
 <h1>Home Page</h1>
+
+{{#each cats}}
+  <article>
+    <h3>{{this.name}}</h3>
+    <img src={{this.imageUrl}} alt="{{cat.name}}" />
+  </article>
+{{/each}}
