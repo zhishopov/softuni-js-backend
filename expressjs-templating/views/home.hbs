@@ -2,7 +2,10 @@
 
 {{#each cats}}
   <article>
-    <h3>{{this.name}}</h3>
-    <img src={{this.imageUrl}} alt="{{cat.name}}" />
+    <h3>{{name}}</h3>
+    {{#if isStar}}
+      <em>SUPERSTAR</em>
+    {{/if}}
+    <img src={{imageUrl}} alt="{{name}}" />
   </article>
 {{/each}}

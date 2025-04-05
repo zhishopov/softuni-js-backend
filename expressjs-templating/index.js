@@ -6,6 +6,7 @@ const app = express();
 const cats = [
   {
     name: "Luna",
+    isStar: true,
     description:
       "Playful and curious, Luna loves climbing and exploring new heights.",
     imageUrl:
