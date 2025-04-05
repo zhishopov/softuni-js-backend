@@ -10,7 +10,7 @@ app.use("/auth", (req, res, next) => {
 });
 
 // Path Middleware
-app.get("/auth", (req, res, next) => {
+app.use("/auth", (req, res, next) => {
   if (Math.random() < 0.5) {
     next();
   } else {
