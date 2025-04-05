@@ -18,6 +18,19 @@ app.use("/auth", (req, res, next) => {
   }
 });
 
+// Route Middleware
+app.get(
+  "/users",
+  (req, res, next) => {
+    console.log("Middlware works");
+
+    next();
+  },
+  (req, res) => {
+    res.send("<h1>Users Page</h1>");
+  }
+);
+
 app.get("/", (req, res) => {
   res.send("<h1>Home Page</h1>");
 });
