@@ -1,6 +1,10 @@
 import express from "express";
+import handlebars from "express-handlebars";
 
 const app = express();
+
+app.engine("handlebars", handlebars.engine());
+app.set("view engine", "handlebars");
 
 // Configure Static Middleware
 app.use(express.static("public"));
