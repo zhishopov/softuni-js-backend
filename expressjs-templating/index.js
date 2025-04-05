@@ -4,11 +4,9 @@ const app = express();
 
 // Middleware
 app.use("/auth", (req, res, next) => {
-  if (Math.random() < 0.5) {
-    next();
-  } else {
-    res.status(401).send("Unauthorized");
-  }
+  console.log(req.url);
+
+  next();
 });
 
 app.get("/", (req, res) => {
@@ -25,8 +23,16 @@ app.get("/cats/:catName", (req, res) => {
   res.send(`<h1>GLORIOUS: ${catName}`);
 });
 
-app.get("/auth", (req, res) => {
-  res.redirect("/");
+app.get("/auth", (req, res, next) => {
+  if (Math.random() < 0.5) {
+    next();
+  } else {
+    res.status(401).send("Unauthorized");
+  }
+});
+
+app.get("/auth/profile", (req, res) => {
+  res.send("<h1>Profile Page</h1>");
 });
 
 app.listen(2000, () =>
