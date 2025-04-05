@@ -39,7 +39,7 @@ app.get(
 );
 
 app.get("/", (req, res) => {
-  res.send("<h1>Home Page</h1>");
+  res.render("home", { layout: false });
 });
 
 app.get("/cats", (req, res) => {
