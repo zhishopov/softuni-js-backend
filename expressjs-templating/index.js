@@ -2,6 +2,9 @@ import express from "express";
 
 const app = express();
 
+// Configure Static Middleware
+app.use(express.static("public"));
+
 // Application Middleware
 app.use("/auth", (req, res, next) => {
   console.log(req.url);
@@ -43,6 +46,7 @@ app.get("/cats/:catName", (req, res) => {
   const catName = req.params.catName;
 
   res.send(`<h1>GLORIOUS: ${catName}`);
+  res.send("./public/cat.avif");
 });
 
 app.get("/auth/profile", (req, res) => {
