@@ -2,11 +2,20 @@ import express from "express";
 
 const app = express();
 
-// Middleware
+// Application Middleware
 app.use("/auth", (req, res, next) => {
   console.log(req.url);
 
   next();
+});
+
+// Path Middleware
+app.get("/auth", (req, res, next) => {
+  if (Math.random() < 0.5) {
+    next();
+  } else {
+    res.status(401).send("Unauthorized");
+  }
 });
 
 app.get("/", (req, res) => {
@@ -21,14 +30,6 @@ app.get("/cats/:catName", (req, res) => {
   const catName = req.params.catName;
 
   res.send(`<h1>GLORIOUS: ${catName}`);
-});
-
-app.get("/auth", (req, res, next) => {
-  if (Math.random() < 0.5) {
-    next();
-  } else {
-    res.status(401).send("Unauthorized");
-  }
 });
 
 app.get("/auth/profile", (req, res) => {
