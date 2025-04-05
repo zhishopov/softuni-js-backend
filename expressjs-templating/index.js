@@ -3,8 +3,13 @@ import handlebars from "express-handlebars";
 
 const app = express();
 
-app.engine("handlebars", handlebars.engine());
-app.set("view engine", "handlebars");
+app.engine(
+  "hbs",
+  handlebars.engine({
+    extname: "hbs",
+  })
+);
+app.set("view engine", "hbs");
 
 // Configure Static Middleware
 app.use(express.static("public"));
@@ -39,7 +44,11 @@ app.get(
 );
 
 app.get("/", (req, res) => {
-  res.render("home", { layout: false });
+  res.render("home");
+});
+
+app.get("/add-cat", (req, res) => {
+  res.render("addCat");
 });
 
 app.get("/cats", (req, res) => {
