@@ -18,6 +18,23 @@ const studentSchema = new Schema({
 // Create mongoose model
 const Student = model("Student", studentSchema);
 
+// Query all data from db
 const students = await Student.find();
+// console.log(students);
 
-console.log(students);
+// Query filtered data from db
+const filtered = await Student.find({ age: 25 });
+console.log(filtered);
+
+// Insert data into db #1
+// const newStudent = new Student({ name: "Ivo", age: 26 });
+// await newStudent.save();
+
+// const students1 = await Student.find();
+// console.log(students1);
+
+// Insert data into db #2
+const createdStudent = await Student.create({
+  name: "Zhivko",
+  age: 29,
+});
