@@ -17,3 +17,7 @@ const studentSchema = new Schema({
 
 // Create mongoose model
 const Student = model("Student", studentSchema);
+
+const students = await Student.find();
+
+console.log(students);
